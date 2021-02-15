@@ -2,6 +2,8 @@
 
 This API accepts an array of distances and returns the sum of them using the unit specified for the result.
 
+[Live demo!!!](https://distancecalculator.auret.es/api/sum)
+
 ## How do I want to approach this project?
 
 Because of the project size, I am going to create a new API using [Lumen](https://lumen.laravel.com/).
@@ -55,4 +57,8 @@ https://distancecalculator.auret.es/api/sum
 
 ### Future improvements
 
-If I have enough time, I would like to use an Enum to specify Units.
+- I would like to add some authentication and security.
+- I would like to use an Enum to specify Units.
+- I would like to add input data validation.
+- Try/catch errors to show problems to the user.
+
