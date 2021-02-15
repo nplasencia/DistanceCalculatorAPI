@@ -8,6 +8,13 @@ use App\Models\Distance;
 
 final class DistanceSumService implements DistanceSumServiceInterface
 {
+    private DistanceTransformServiceInterface $transformService;
+
+    public function __construct(DistanceTransformServiceInterface $transformService)
+    {
+        $this->transformService = $transformService;
+    }
+
     /**
      * @param Distance[] $distances
      * @param string $resultUnit
@@ -15,11 +22,11 @@ final class DistanceSumService implements DistanceSumServiceInterface
      */
     public function sum(array $distances, string $resultUnit): Distance
     {
-        $sum = array_reduce($distances, function(float $carry, Distance $distance) {
-            $carry += $distance->getValue();
-            return $carry;
-        }, 0);
+        $sum = 0;
+        foreach ($distances as $distance) {
+            $sum += $this->transformService->getTransformedValue($distance, $resultUnit);
+        }
 
-        return new Distance($sum, $resultUnit);
+        return new Distance(round($sum, 2), $resultUnit);
     }
 }
