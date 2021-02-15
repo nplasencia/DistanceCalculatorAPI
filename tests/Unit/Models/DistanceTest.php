@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Unit\app\Models;
+namespace Unit\Models;
 
 use App\Models\Distance;
 use PHPUnit\Framework\TestCase;
