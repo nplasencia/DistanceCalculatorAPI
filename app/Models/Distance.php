@@ -6,6 +6,7 @@ namespace App\Models;
 
 use JsonException;
 use JsonSerializable;
+use stdClass;
 
 final class Distance implements JsonSerializable
 {
@@ -37,6 +38,11 @@ final class Distance implements JsonSerializable
     {
         $object = json_decode($jsonString, false, 512, JSON_THROW_ON_ERROR);
         return new Distance($object->value, $object->unit);
+    }
+
+    public static function createFromJsonObject(stdClass $jsonObject): Distance
+    {
+        return new Distance($jsonObject->value, $jsonObject->unit);
     }
 
     public function jsonSerialize(): array

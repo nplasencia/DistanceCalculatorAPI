@@ -28,4 +28,14 @@ final class DistanceTest extends TestCase
         $expected = new Distance(1.23, 'meter');
         $this->assertEquals($expected, $distance);
     }
+
+    public function test_distance_createFromJsonObject_success()
+    {
+        $distanceObjectString = '{"value":1.23,"unit":"meter"}';
+        $distanceObject = json_decode($distanceObjectString, false, 512, JSON_THROW_ON_ERROR);
+        $distance = Distance::createFromJsonObject($distanceObject);
+
+        $expected = new Distance(1.23, 'meter');
+        $this->assertEquals($expected, $distance);
+    }
 }
