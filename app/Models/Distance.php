@@ -12,6 +12,16 @@ final class Distance implements JsonSerializable
     private float $value;
     private string $unit;
 
+    public function getValue(): float
+    {
+        return $this->value;
+    }
+
+    public function getUnit(): string
+    {
+        return $this->unit;
+    }
+
     public function __construct(float $value, string $unit)
     {
         $this->value = $value;
